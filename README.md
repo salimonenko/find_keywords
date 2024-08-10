@@ -2,15 +2,20 @@
  Поиск по ключевым словам
 
 The software is launched using the link http://find_keywords.ru/index.php 
+
 Checked for PHP5.3, PHP8.0. 
 When launched using the HTTP port number (for example, http://localhost:8000/), you should specify the port number (8000) in the keywords_parameters.php file. 
 
 This script allows you to search by keywords among the files of the site's web pages, links to which are provided in the site map (Sitemap.xml file). The keywords must be contained in the meta tags of each file of the form: <meta name="keywords" content="word, word1, word2"/> 
 To speed up the work, for you not to have to review all the web pages of the site each time, when you click the "Create a keyword file based on Sitemap.xml" button, a URL_keywords.csv file is created on the secret subdomain "secret", containing lists of links to the site files and the corresponding keywords. When changing keywords in any of the files and/or when changing the URL of web pages, adding new ones or deleting existing ones, you need to create a new keyword file. That is, this is essentially indexing keywords by the URL of the corresponding web pages (among those present in the sitemap file). 
 Once the keyword file is created, you can search by keywords. To do this, enter the search keywords separated by spaces in the search area. The search results will be most relevant, firstly, to the number of keywords found in the corresponding web pages and, secondly, to the order of the keywords in the search area. For example, if you enter the following keywords: newspaper car shock absorber the following links to web pages will be shown: 
+
     /raznoe/amortizatory.html (car, shock absorber, car) 
+    
     /raznoe/dudaev.html (Dudaev, Dzhokhar, newspaper, video, media) 
+    
     /raznoe/akkumulatory.html (battery, car, car) 
+    
 1. That is, first of all, links to those web pages will be shown, among the keywords (in meta tags) of which there is the largest number of the searched keywords. In this case, the web page, having among the keywords the words "newspaper car", i.e. /raznoe/amortizatory.html. 
 2. Secondly, links to web pages will be shown, the keywords of which correspond to the specified (during the search) keywords in the order of their sequence in the query string. In this case, this is a web page that has the word "newspaper" among the keywords, i.e. /raznoe/dudaev.html. 
 3. And, finally, after these links, all other links corresponding to the keywords will be shown (taking into account point 2). To be able to search for fuzzy matches, the metaphone() function of the PHP language is used. 
@@ -19,6 +24,7 @@ If the site is implemented not on files, as in this software, but on databases (
 
 
 Запуск ПО производится при помощи ссылки http://find_keywords.ru/index.php
+
 Проверена работа в PHP5.3, PHP8.0.
 При запуске с использованием номера HTTP-порта (например, http://localhost:8000/) следует задать номер порта (8000) в файле keywords_parameters.php.
 
@@ -27,9 +33,13 @@ If the site is implemented not on files, as in this software, but on databases (
 Когда файл ключевых слов создан, можно делать поиск по ключевым словам. Для этого в области поиска нужно ввести искомые ключевые слова через пробелы. Результаты поиска будут наиболее релевантны, во-первых, количеству ключевых слов, встретившихся в соответствующих вебстраницах и, во-вторых, порядку следования ключевых слов в области поиска. Например, если ввести такие ключевые слова: 
 газета машина амортизатор
 будут показаны следующие ссылки на вебстраницы:
+
     /raznoe/amortizatory.html (автомобиль, амортизатор, машина)
-    noe/dudaev.html (Дудаев, Джохар, газета, видео, сми)
+    
+    /raznoe/dudaev.html (Дудаев, Джохар, газета, видео, сми)
+    
     /raznoe/akkumulatory.html (акумулятор, автомобиль, машина)
+    
 1. Т.е. в первую очередь будут показаны ссылки на те вебстраницы, среди ключевых слов (в метатегах) которых встречается наибольшее количество искомых ключевых слов. В данном случае вебстраница, имеющая среди ключевых слов слова "газета машина", т.е. /raznoe/amortizatory.html.
 2. Во вторую очередь будут показаны ссылки на вебстраницы, ключевые слова которых соответствуют заданным (при поиске) ключевым словам в порядке их очередности в строке запроса. В данном случае это вебстраница, имеющая среди ключевых слов слово "газета", т.е. /raznoe/dudaev.html.
 3. И, наконец, после этих ссылок будут показаны все остальные ссылки, соответствующие ключевым словам (с учетом п.2). 
